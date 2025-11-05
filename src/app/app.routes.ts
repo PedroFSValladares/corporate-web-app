@@ -1,16 +1,18 @@
 import { Routes } from '@angular/router';
-import { UsersComponent } from './users-component/users-component';
-import { DetailUserComponent } from './detail-user-component/detail-user-component';
-import { AddUserComponent } from './add-user-component/add-user-component';
-import { EditUserComponent } from './edit-user-component/edit-user-component';
+import {ListarFuncionarioComponent} from './funcionarios/listar-funcionario-component/listar-funcionario-component';
+import {IncluirFuncionarioComponent} from './funcionarios/incluir-funcionario-component/incluir-funcionario-component';
+import {AlterarFuncionarioComponent} from './funcionarios/alterar-funcionario-component/alterar-funcionario-component';
+import {
+  DetalharFuncionarioComponent
+} from './funcionarios/detalhar-funcionario-component/detalhar-funcionario-component';
 
 export const routes: Routes = [
-    {path: 'users', 
+    {path: 'funcionarios',
         children: [
-            {path: '', component: UsersComponent},
-            {path: 'add', component: AddUserComponent},
-            {path: 'detail/:id', component: DetailUserComponent},
-            {path: 'edit/:id', component: EditUserComponent}
+            {path: '', component: ListarFuncionarioComponent},
+            {path: 'inlcuir', component: IncluirFuncionarioComponent},
+            {path: 'detalhar/:id', component: DetalharFuncionarioComponent},
+            {path: 'alterar/:id', component: AlterarFuncionarioComponent}
         ]
     }
 ];
