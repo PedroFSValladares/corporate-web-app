@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusSelector } from './status-selector';
+import { BasicSelector } from './basic-selector';
 
-describe('StatusSelector', () => {
-  let component: StatusSelector;
-  let fixture: ComponentFixture<StatusSelector>;
+describe('BasicSelector', () => {
+  let component: BasicSelector;
+  let fixture: ComponentFixture<BasicSelector>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StatusSelector]
+      imports: [BasicSelector]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StatusSelector);
+    fixture = TestBed.createComponent(BasicSelector);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
