@@ -86,9 +86,9 @@
         <div ngbDropdown >
           <button ngbDropdownToggle class="page-button" type="button" id="paginationDropdown">{{qntdResgistrosAMostrar}}</button>
            <ul ngbDropdownMenu aria-labelledby="paginationDropdown">
-            <li><button ngbDropdownItem class="dropdown-item"> 10</button></li>
-             <li><button ngbDropdownItem class="dropdown-item"> 30</button></li>
-             <li><button ngbDropdownItem class="dropdown-item"> 50</button></li>
+            <li><button ngbDropdownItem (click)="alterarQntdRegistros(10)" class="dropdown-item"> 10</button></li>
+             <li><button ngbDropdownItem (click)="alterarQntdRegistros(30)" class="dropdown-item"> 30</button></li>
+             <li><button ngbDropdownItem (click)="alterarQntdRegistros(50)" class="dropdown-item"> 50</button></li>
           </ul>
         </div>
       </div>

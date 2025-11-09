@@ -53,13 +53,7 @@ export class ListarFuncionarioComponent implements OnInit {
       this.funcionarios = response.data
       this.paginar(1);
       this.paginationEnabled = true;
-      this.qntdPaginas = []
-      for(let i = 1; i <= this.funcionarios.length / 10; i++) {
-        this.qntdPaginas.push(i);
-      }
-      if(this.funcionarios.length % 10 > 0){
-        this.qntdPaginas.push(Math.trunc(this.funcionarios.length / 10) + 1);
-      }
+      this.montarListaDePaginas()
       this.cdr.detectChanges();
     })
   }
@@ -68,6 +62,7 @@ export class ListarFuncionarioComponent implements OnInit {
     event.preventDefault();
     this.funcionarios = [];
     this.paginaAtual = [];
+    this.qntdPaginas = [];
     this.formInputs.forEach(input => {input.nativeElement.querySelector('input').value = ''});
     this.formSelectors.forEach(input => {input.nativeElement.querySelector('select').value = ''});
     this.paginationEnabled = false;
@@ -94,6 +89,22 @@ export class ListarFuncionarioComponent implements OnInit {
     this.pageOffset = (pagina * this.qntdResgistrosAMostrar) - this.qntdResgistrosAMostrar;
     this.numeroPaginaAtual = pagina;
     this.paginaAtual = this.funcionarios.slice(this.pageOffset, pagina * this.qntdResgistrosAMostrar);
+  }
+
+  alterarQntdRegistros(numero: number): void {
+    this.qntdResgistrosAMostrar = numero;
+    this.paginar(this.numeroPaginaAtual);
+    this.montarListaDePaginas();
+  }
+
+  montarListaDePaginas() : void {
+    this.qntdPaginas = []
+    for(let i = 1; i <= this.funcionarios.length / this.qntdResgistrosAMostrar; i++) {
+      this.qntdPaginas.push(i);
+    }
+    if(this.funcionarios.length % 10 > 0){
+      this.qntdPaginas.push(Math.trunc(this.funcionarios.length / this.qntdResgistrosAMostrar) + 1);
+    }
   }
 
   ngOnInit(): void {
