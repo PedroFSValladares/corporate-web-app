@@ -51,7 +51,7 @@ export class ListarFuncionarioComponent implements OnInit {
     event.preventDefault();
     this.funcionarioService.obterTodosOsFuncionarios().subscribe(response => {
       this.funcionarios = response.data
-      this.paginaAtual = this.funcionarios.slice(this.pageOffset - 1, this.numeroPaginaAtual * this.qntdResgistrosAMostrar);
+      this.paginar(1);
       this.paginationEnabled = true;
       this.qntdPaginas = []
       for(let i = 1; i <= this.funcionarios.length / 10; i++) {
@@ -90,8 +90,7 @@ export class ListarFuncionarioComponent implements OnInit {
       })
   }
 
-  paginar(event: PointerEvent, pagina : number): void {
-    event.preventDefault();
+  paginar(pagina : number): void {
     this.pageOffset = (pagina * this.qntdResgistrosAMostrar) - this.qntdResgistrosAMostrar;
     this.numeroPaginaAtual = pagina;
     this.paginaAtual = this.funcionarios.slice(this.pageOffset, pagina * this.qntdResgistrosAMostrar);
