@@ -1,0 +1,11 @@
+.d-flex {
+  grid-template-rows: auto auto;
+  grid-auto-columns: auto;
+}
+form{
+  background-color: white;
+  border-radius: 1rem;
+}
+.app-section{
+  overflow: auto;
+}

@@ -11,8 +11,8 @@ export const routes: Routes = [
         children: [
             {path: '', component: ListarFuncionarioComponent},
             {path: 'inlcuir', component: IncluirFuncionarioComponent},
-            {path: 'detalhar/:id', component: DetalharFuncionarioComponent},
-            {path: 'alterar/:id', component: AlterarFuncionarioComponent}
+            {path: 'detalhar/:cpf', component: DetalharFuncionarioComponent},
+            {path: 'alterar/:cpf', component: AlterarFuncionarioComponent}
         ]
     }
 ];

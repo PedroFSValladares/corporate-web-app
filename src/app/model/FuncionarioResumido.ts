@@ -2,14 +2,14 @@ export class FuncionarioResumido {
   cpf: string;
   matricula: string;
   nome: string
-  nome_cargo: string
+  nomeCargo: string
   status: boolean
 
-    constructor(cpf: string, nome: string, matricula: string, nome_cargo: string, status: boolean) {
+    constructor(cpf: string, nome: string, matricula: string, nomeCargo: string, status: boolean) {
         this.cpf = cpf;
         this.nome = nome;
         this.matricula = matricula;
-        this.nome_cargo = nome_cargo;
+        this.nomeCargo = nomeCargo;
         this.status = status;
     }
 }

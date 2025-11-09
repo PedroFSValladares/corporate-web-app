@@ -1,19 +1,43 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {routes} from '../../app.routes';
+import {ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {FuncionarioResumido} from '../../model/FuncionarioResumido';
+import {FuncionarioService} from '../../services/funcionario-service/funcionario-service';
+import {RouterLink} from '@angular/router';
+import {CargoSelector} from '../../inputs/cargo-selector/cargo-selector';
+import {BasicInput} from '../../inputs/basic-input/basic-input';
+import {ApiResponse} from '../../model/ApiResponse';
 
 @Component({
   selector: 'app-listar-funcionario-component',
-  imports: [],
+  imports: [
+    RouterLink,
+    CargoSelector,
+    BasicInput,
+  ],
   templateUrl: './listar-funcionario-component.html',
   styleUrl: './listar-funcionario-component.css'
 })
 export class ListarFuncionarioComponent {
+  constructor(
+    private funcionarioService: FuncionarioService,
+    private cdr: ChangeDetectorRef) {
+  }
 
-  constructor(private httpClient: HttpClient) { }
+  @ViewChildren(BasicInput, {read:  ElementRef}) formInputs: QueryList<ElementRef> = new QueryList<ElementRef>();
+  funcionarios : FuncionarioResumido[] = [];
 
-  obterFuncionarios(){
-    this.httpClient.get<FuncionarioResumido>("rh/api/funcionarios").subscribe()
+  buscarFuncionarios(event: Event): void {
+    event.preventDefault();
+    this.funcionarioService.obterTodosOsFuncionarios().subscribe(response => {
+      this.funcionarios = response.data
+
+      this.cdr.detectChanges();
+      console.log(this.funcionarios);
+    })
+  }
+
+  limparPesquisa(event: Event): void {
+    event.preventDefault();
+    this.funcionarios = [];
+    this.formInputs.forEach(input => {console.log(input.nativeElement.querySelector('input').value = '')});
   }
 }

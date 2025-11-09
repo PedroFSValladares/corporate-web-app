@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { InputBox } from "./input-box/input-box";
 import {SideMenuComponent} from './side-menu-component/side-menu-component';
 
 @Component({
